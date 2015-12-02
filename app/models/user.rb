@@ -5,10 +5,18 @@ class User < ActiveRecord::Base
   MAX_EMAIL_LENGTH = 255
 
   before_save { self.email = email.downcase }
+  has_secure_password
 
-  validates :name, presence: true, length: { maximum: MAX_NAME_LENGTH }
+  validates :name,  presence: true,
+                    length: { maximum: MAX_NAME_LENGTH }
   validates :email, presence: true,
                     length: { maximum: MAX_EMAIL_LENGTH },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
+  validates :password,  presence: true,
+                        length: { minimum: 6 },
+                        allow_nil: true   # allows for user update
+
+
+
 end
