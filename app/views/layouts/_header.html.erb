@@ -5,7 +5,7 @@
       <%= link_to "Profile", current_user %>
       <%= link_to "Logout", logout_path, method: "delete" %>
     <% else %>
-      <%= link_to "Login", login_path %>
+      <%= render 'sessions/login_form' %>
     <% end %>
   </nav>
 </header>
