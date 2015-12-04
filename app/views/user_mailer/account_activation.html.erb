@@ -1,0 +1,7 @@
+<h1>Account Activation</h1>
+
+<h3>Hey <%= @user.name %>.</h3>
+
+<p>Just one more step! Click below to activate your Pug account:</p>
+
+<%= link_to "Activate", edit_account_activation_url(@user.activation_token, email: @user.email) %>

@@ -9,11 +9,16 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
-      # successful login
-      login user
-      # is "remember me" check box checked
-      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      redirect_back_or user
+      if user.activated?
+        # successful login: user exists, correct password, is activated
+        login user
+        # is "remember me" check box checked?
+        params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+        redirect_back_or user
+      else
+        # account not yet activated
+        redirect_to root_url
+      end
     else
       # unsuccessful login; back to login page
       render 'new'

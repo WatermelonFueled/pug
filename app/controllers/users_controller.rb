@@ -19,8 +19,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       # successfully saved new user
-      login @user
-      redirect_to @user
+      # send account activation email
+      @user.send_activation_email
+      
+      redirect_to login_path
     else
       render 'new'
     end

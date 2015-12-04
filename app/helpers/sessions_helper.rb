@@ -24,7 +24,7 @@ module SessionsHelper
     elsif (user_id = cookies.signed[:user_id])
       # cookie found of a persistent session
       user = User.find_by(id: user_id)
-      if user && user.authenticated?(cookies[:remember_token])
+      if user && user.authenticated?(:remember, cookies[:remember_token])
         # user matching cookie has correct remember digest on account
         login user
         @current_user = user

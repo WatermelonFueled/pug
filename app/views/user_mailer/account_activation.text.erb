@@ -1,0 +1,5 @@
+Hey <%= @user.name %>.
+
+Just one more step! Visit the link below to activate your Pug account:
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
