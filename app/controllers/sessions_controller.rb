@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       login user
       # is "remember me" check box checked
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      redirect_to user
+      redirect_back_or user
     else
       # unsuccessful login; back to login page
       render 'new'

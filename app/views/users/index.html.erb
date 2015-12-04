@@ -1,0 +1,13 @@
+<h1>Users Index</h1>
+
+<%= will_paginate %>
+  <ul>
+    <% @users.each do |user| %>
+      <il>
+        <%= link_to user.name, user %> ,
+        <%= user.email %> |
+        <%= link_to "delete", user, method: :delete, data: { confirm: "delete user?" } %>
+      </li>
+    <% end %>
+  </ul>
+<%= will_paginate %>
