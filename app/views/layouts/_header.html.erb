@@ -5,7 +5,7 @@
       <%= link_to "Profile", current_user %>
       <%= link_to "Settings", edit_user_path(current_user) %>
       <%= link_to "Logout", logout_path, method: "delete" %>
-    <% else %>
+    <% elsif request.path != "/login" %>
       <%= render 'sessions/login_form' %>
     <% end %>
   </nav>

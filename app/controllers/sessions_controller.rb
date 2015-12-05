@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
         redirect_back_or user
       else
         # account not yet activated
-        redirect_to root_url
+        render 'new'
       end
     else
       # unsuccessful login; back to login page
