@@ -1,0 +1,6 @@
+<li>
+  Rating: <%= feedback.rating %>
+  Comment: <%= feedback.comment %>
+  Sender: <%= link_to feedback.sender.name, feedback.sender %>
+  sent <%= time_ago_in_words(feedback.created_at) %> ago.
+</li>

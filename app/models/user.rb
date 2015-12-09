@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :sent_feedbacks, :class_name => "Feedback", :foreign_key => "sender_id"
+  has_many :received_feedbacks, :class_name => "Feedback", :foreign_key => "recipient_id"
+
   # constants
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i #NOT FINAL
   MAX_NAME_LENGTH = 30

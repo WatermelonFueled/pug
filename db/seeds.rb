@@ -25,3 +25,10 @@ User.create!( name: "foobar",
               email: "foo2@bar.com",
               password:               "foobar",
               password_confirmation:  "foobar")
+
+admin = User.first
+50.times do
+  comment = "tester comment is for testing testy tests"
+  rating = 1
+  admin.received_feedbacks.create!(rating: rating, comment: comment, sender: admin, recipient: admin)
+end
